@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Receptionist Dashboard - MediCare HMS</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/dashboard.css"/>
+  <link rel="stylesheet" href="../css/receptionist.css"/>
+</head>
+<body class="receptionist-body">
+
+  <!-- Topbar -->
+  <div class="receptionist-topbar">
+    <div class="topbar-left">
+      <h2>MediCare HMS</h2>
+      <span class="topbar-divider">|</span>
+      <span class="topbar-role">Receptionist Portal</span>
+    </div>
+    <div class="receptionist-nav">
+      <div class="rec-nav-item active" onclick="showRecSection('patients', this)">Patients</div>
+      <div class="rec-nav-item" onclick="showRecSection('appointments', this)">Appointments</div>
+      <div class="rec-nav-item" onclick="showRecSection('profile', this)">Profile</div>
+    </div>
+    <div class="topbar-right">
+      <div class="avatar" style="background:#0F6E56;">RC</div>
+      <span class="admin-name">Receptionist</span>
+      <button class="btn-logout" onclick="window.location.href='../index.html'">Logout</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="receptionist-content">
+
+    <!-- Patients Section -->
+    <div class="rec-section active" id="rsec-patients">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.2rem;">
+        <p class="page-title" style="margin-bottom:0;">Register Patients</p>
+        <button class="btn-primary" onclick="openModal('rec-patient-modal')">+ Register Patient</button>
+      </div>
+      <div class="card">
+        <div style="margin-bottom:1rem;">
+          <input type="text" id="rec-patient-search" placeholder="Search by name or disease..."
+                 oninput="recFilterPatients()" style="width:280px; height:36px; padding:0 12px; border:1px solid #dde3ec; border-radius:8px; font-size:13px; outline:none;"/>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Contact</th>
+              <th>Disease</th>
+              <th>Admission Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="rec-patient-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Appointments Section -->
+    <div class="rec-section" id="rsec-appointments">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.2rem;">
+        <p class="page-title" style="margin-bottom:0;">Schedule Appointments</p>
+        <button class="btn-primary" onclick="openModal('rec-appt-modal')">+ Book Appointment</button>
+      </div>
+      <div class="card">
+        <div style="margin-bottom:1rem;">
+          <input type="text" id="rec-appt-search" placeholder="Search by patient or doctor..."
+                 oninput="recFilterAppointments()" style="width:280px; height:36px; padding:0 12px; border:1px solid #dde3ec; border-radius:8px; font-size:13px; outline:none;"/>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Patient</th>
+              <th>Doctor</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="rec-appt-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="rec-section" id="rsec-profile">
+      <p class="page-title">My Profile</p>
+      <div class="profile-card">
+        <div class="profile-avatar" style="background:#0F6E56;">RC</div>
+        <div class="profile-info">
+          <h3>Receptionist</h3>
+          <span class="badge green">Active</span>
+        </div>
+      </div>
+      <div class="profile-grid">
+        <div class="card">
+          <h4>Personal Details</h4>
+          <div class="detail-row"><span class="detail-label">Role</span><span>Receptionist</span></div>
+          <div class="detail-row"><span class="detail-label">Department</span><span>Front Desk</span></div>
+          <div class="detail-row"><span class="detail-label">Contact</span><span>9876500000</span></div>
+          <div class="detail-row"><span class="detail-label">Email</span><span>reception@hospital.com</span></div>
+        </div>
+        <div class="card">
+          <h4>Today's Summary</h4>
+          <div class="stats-grid" style="grid-template-columns:repeat(2,1fr); margin-bottom:0;">
+            <div class="stat-card"><div class="label">Patients Registered</div><div class="value" id="rec-total-patients">0</div></div>
+            <div class="stat-card"><div class="label">Appointments Booked</div><div class="value" id="rec-total-appts">0</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Register Patient Modal -->
+  <div class="modal-overlay" id="rec-patient-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h4>Register New Patient</h4>
+        <span class="modal-close" onclick="closeModal('rec-patient-modal')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="rp-name" placeholder="e.g. Rohit Sharma"/>
+          </div>
+          <div class="form-group">
+            <label>Age</label>
+            <input type="number" id="rp-age" placeholder="e.g. 28"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Gender</label>
+            <select id="rp-gender">
+              <option value="">Select</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Contact Number</label>
+            <input type="text" id="rp-contact" placeholder="e.g. 9876543210"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Disease / Condition</label>
+            <input type="text" id="rp-disease" placeholder="e.g. Diabetes"/>
+          </div>
+          <div class="form-group">
+            <label>Admission Date</label>
+            <input type="date" id="rp-date"/>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeModal('rec-patient-modal')">Cancel</button>
+        <button class="btn-primary" onclick="recAddPatient()">Register</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Book Appointment Modal -->
+  <div class="modal-overlay" id="rec-appt-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h4>Book Appointment</h4>
+        <span class="modal-close" onclick="closeModal('rec-appt-modal')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Patient Name</label>
+            <input type="text" id="ra-patient" placeholder="e.g. Rohit Sharma"/>
+          </div>
+          <div class="form-group">
+            <label>Doctor Name</label>
+            <input type="text" id="ra-doctor" placeholder="e.g. Dr. Mehta"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" id="ra-date"/>
+          </div>
+          <div class="form-group">
+            <label>Time</label>
+            <input type="time" id="ra-time"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select id="ra-status">
+            <option value="">Select</option>
+            <option>Pending</option>
+            <option>Confirmed</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeModal('rec-appt-modal')">Cancel</button>
+        <button class="btn-primary" onclick="recAddAppointment()">Book</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/receptionist.js"></script>
+
+</body>
+</html>

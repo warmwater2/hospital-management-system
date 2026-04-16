@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Patient Dashboard</title>
+
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/patient.css"/>
+</head>
+
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar-left">
+    <h2>MediCare HMS</h2>
+    <span>| Patient Portal</span>
+  </div>
+
+  <div class="topbar-right">
+    <div class="avatar">PT</div>
+    <span>Patient</span>
+    <button onclick="window.location.href='../index.html'">Logout</button>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="patient-container">
+
+  <h2>My Appointments</h2>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Doctor</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="patient-appt-body"></tbody>
+    </table>
+  </div>
+
+  <h2>My Medical Records</h2>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Diagnosis</th>
+          <th>Treatment</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="patient-record-body"></tbody>
+    </table>
+  </div>
+
+  <h2>My Profile</h2>
+
+  <div class="card profile-card">
+    <div class="avatar big">PT</div>
+    <div>
+      <h3>Patient</h3>
+      <p>MediCare HMS User</p>
+    </div>
+  </div>
+
+</div>
+
+<script src="../js/patient.js"></script>
+
+</body>
+</html>

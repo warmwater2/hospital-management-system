@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - MediCare HMS</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/dashboard.css"/>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <h2>MediCare HMS</h2>
+      <span>Admin Panel</span>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Main</div>
+      <div class="nav-item active" onclick="showSection('dashboard', this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" height="16"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </div>
+      <div class="nav-item" onclick="showSection('patients', this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" height="16"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Patients
+      </div>
+      <div class="nav-item" onclick="showSection('doctors', this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" height="16"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Doctors
+      </div>
+      <div class="nav-item" onclick="showSection('appointments', this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Appointments
+      </div>
+      <div class="nav-label">Finance</div>
+      <div class="nav-item" onclick="showSection('billing', this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" height="16"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Billing
+      </div>
+      <div class="nav-label">Health</div>
+      <div class="nav-item" onclick="showSection('records', this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Medical Records
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="logout" onclick="window.location.href='../index.html'">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Logout
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <div class="topbar">
+      <h3 id="page-heading">Dashboard</h3>
+      <div class="admin-info">
+        <div class="avatar">AD</div>
+        <span class="admin-name">Admin</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- Dashboard Section -->
+      <div class="section active" id="sec-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="label">Total Patients</div>
+            <div class="value">124</div>
+            <div class="sub">+8 this week</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">Total Doctors</div>
+            <div class="value">18</div>
+            <div class="sub">3 on leave</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">Appointments Today</div>
+            <div class="value">37</div>
+            <div class="sub">6 pending</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">Revenue</div>
+            <div class="value">&#8377;82k</div>
+            <div class="sub">This month</div>
+          </div>
+        </div>
+        <div class="card">
+          <h4>Recent Appointments</h4>
+          <table>
+            <thead>
+              <tr><th>Patient</th><th>Doctor</th><th>Date</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Rohit Sharma</td><td>Dr. Mehta</td><td>14 Apr 2026</td><td><span class="badge green">Confirmed</span></td></tr>
+              <tr><td>Priya Patel</td><td>Dr. Singh</td><td>14 Apr 2026</td><td><span class="badge amber">Pending</span></td></tr>
+              <tr><td>Anil Kumar</td><td>Dr. Reddy</td><td>13 Apr 2026</td><td><span class="badge blue">Completed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      
+
+      <!-- Patients Section -->
+<div class="section" id="sec-patients">
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.2rem;">
+    <p class="page-title" style="margin-bottom:0;">Patients</p>
+    <button class="btn-primary" onclick="openModal('patient-modal')">+ Add Patient</button>
+  </div>
+
+  <div class="card">
+    <div style="margin-bottom:1rem;">
+      <input type="text" id="patient-search" placeholder="Search by name or disease..." 
+             oninput="filterPatients()" style="width:280px; height:36px; padding:0 12px; border:1px solid #dde3ec; border-radius:8px; font-size:13px; outline:none;"/>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Contact</th>
+          <th>Disease</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="patient-table-body">
+        <!-- Filled by JS -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Add Patient Modal -->
+<div class="modal-overlay" id="patient-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h4>Add New Patient</h4>
+      <span class="modal-close" onclick="closeModal('patient-modal')">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="p-name" placeholder="e.g. Rohit Sharma"/>
+        </div>
+        <div class="form-group">
+          <label>Age</label>
+          <input type="number" id="p-age" placeholder="e.g. 28"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Gender</label>
+          <select id="p-gender">
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Contact Number</label>
+          <input type="text" id="p-contact" placeholder="e.g. 9876543210"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Disease / Condition</label>
+          <input type="text" id="p-disease" placeholder="e.g. Diabetes"/>
+        </div>
+        <div class="form-group">
+          <label>Date of Admission</label>
+          <input type="date" id="p-date"/>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal('patient-modal')">Cancel</button>
+      <button class="btn-primary" onclick="addPatient()">Save Patient</button>
+    </div>
+  </div>
+</div>
+
+      <!-- Doctors Section -->
+<div class="section" id="sec-doctors">
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.2rem;">
+    <p class="page-title" style="margin-bottom:0;">Doctors</p>
+    <button class="btn-primary" onclick="openModal('doctor-modal')">+ Add Doctor</button>
+  </div>
+
+  <div class="card">
+    <div style="margin-bottom:1rem;">
+      <input type="text" id="doctor-search" placeholder="Search by name or specialization..."
+             oninput="filterDoctors()" style="width:300px; height:36px; padding:0 12px; border:1px solid #dde3ec; border-radius:8px; font-size:13px; outline:none;"/>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Specialization</th>
+          <th>Contact</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="doctor-table-body">
+        <!-- Filled by JS -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Add Doctor Modal -->
+<div class="modal-overlay" id="doctor-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h4>Add New Doctor</h4>
+      <span class="modal-close" onclick="closeModal('doctor-modal')">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="d-name" placeholder="e.g. Dr. Rajesh Mehta"/>
+        </div>
+        <div class="form-group">
+          <label>Specialization</label>
+          <input type="text" id="d-spec" placeholder="e.g. Cardiologist"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Contact Number</label>
+          <input type="text" id="d-contact" placeholder="e.g. 9876543210"/>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="d-email" placeholder="e.g. dr.mehta@hospital.com"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Experience (years)</label>
+          <input type="number" id="d-exp" placeholder="e.g. 10"/>
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select id="d-status">
+            <option value="">Select</option>
+            <option>Available</option>
+            <option>On Leave</option>
+            <option>Unavailable</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal('doctor-modal')">Cancel</button>
+      <button class="btn-primary" onclick="addDoctor()">Save Doctor</button>
+    </div>
+  </div>
+</div>
+
+
+
+      <!-- Appointments Section -->
+<div class="section" id="sec-appointments">
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.2rem;">
+    <p class="page-title" style="margin-bottom:0;">Appointments</p>
+    <button class="btn-primary" onclick="openModal('appointment-modal')">+ Book Appointment</button>
+  </div>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Patient</th>
+          <th>Doctor</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="appointment-table-body">
+        <!-- Filled by JS -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Appointment Modal -->
+<div class="modal-overlay" id="appointment-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h4>Book Appointment</h4>
+      <span class="modal-close" onclick="closeModal('appointment-modal')">&times;</span>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Patient Name</label>
+          <input type="text" id="a-patient" placeholder="Enter patient name"/>
+        </div>
+        <div class="form-group">
+          <label>Doctor Name</label>
+          <input type="text" id="a-doctor" placeholder="Enter doctor name"/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="a-date"/>
+        </div>
+        <div class="form-group">
+          <label>Time</label>
+          <input type="time" id="a-time"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Status</label>
+        <select id="a-status">
+          <option>Pending</option>
+          <option>Confirmed</option>
+          <option>Completed</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal('appointment-modal')">Cancel</button>
+      <button class="btn-primary" onclick="addAppointment()">Save</button>
+    </div>
+  </div>
+</div>
+
+      <!-- Billing Section -->
+<div class="section" id="sec-billing">
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.2rem;">
+    <p class="page-title" style="margin-bottom:0;">Billing</p>
+    <button class="btn-primary" onclick="openModal('billing-modal')">+ Generate Bill</button>
+  </div>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Patient</th>
+          <th>Doctor Fee</th>
+          <th>Medicine Cost</th>
+          <th>Other Charges</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="billing-table-body">
+        <!-- Filled by JS -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Billing Modal -->
+<div class="modal-overlay" id="billing-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h4>Generate Bill</h4>
+      <span class="modal-close" onclick="closeModal('billing-modal')">&times;</span>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Patient Name</label>
+        <input type="text" id="b-patient" placeholder="Enter patient name"/>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Doctor Fee</label>
+          <input type="number" id="b-fee"/>
+        </div>
+        <div class="form-group">
+          <label>Medicine Cost</label>
+          <input type="number" id="b-medicine"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Other Charges</label>
+        <input type="number" id="b-other"/>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal('billing-modal')">Cancel</button>
+      <button class="btn-primary" onclick="addBill()">Generate</button>
+    </div>
+  </div>
+</div>
+      
+
+<!-- Medical Records Section -->
+<div class="section" id="sec-records">
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.2rem;">
+    <p class="page-title" style="margin-bottom:0;">Medical Records</p>
+    <button class="btn-primary" onclick="openModal('record-modal')">+ Add Record</button>
+  </div>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Patient</th>
+          <th>Diagnosis</th>
+          <th>Treatment</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="record-table-body">
+        <!-- Filled by JS -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Record Modal -->
+<div class="modal-overlay" id="record-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h4>Add Medical Record</h4>
+      <span class="modal-close" onclick="closeModal('record-modal')">&times;</span>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Patient Name</label>
+        <input type="text" id="r-patient" placeholder="Enter patient name"/>
+      </div>
+
+      <div class="form-group">
+        <label>Diagnosis</label>
+        <input type="text" id="r-diagnosis" placeholder="e.g. Fever, Diabetes"/>
+      </div>
+
+      <div class="form-group">
+        <label>Treatment</label>
+        <input type="text" id="r-treatment" placeholder="e.g. Medicines prescribed"/>
+      </div>
+
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="r-date"/>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal('record-modal')">Cancel</button>
+      <button class="btn-primary" onclick="addRecord()">Save</button>
+    </div>
+  </div>
+</div>
+
+  <script src="../js/dashboard.js"></script>
+
+</body>
+</html>

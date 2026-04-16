@@ -1,0 +1,87 @@
+.doctor-body {
+  display: block;
+  height: 100vh;
+  overflow: hidden;
+  background: #f0f4f8;
+}
+
+/* Topbar */
+.doctor-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 0 1.5rem;
+  height: 56px;
+  border-bottom: 1px solid #e8edf3;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+}
+.doctor-topbar-left { display: flex; align-items: center; gap: 10px; }
+.doctor-topbar-left h2 { font-size: 15px; font-weight: 700; color: #185FA5; }
+.topbar-divider { color: #dde3ec; font-size: 18px; }
+.topbar-role { font-size: 13px; color: #888; }
+.doctor-nav { display: flex; gap: 4px; }
+.doctor-nav-item {
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.doctor-nav-item:hover { background: #f0f4f8; color: #185FA5; }
+.doctor-nav-item.active { background: #e6f1fb; color: #185FA5; font-weight: 600; }
+.doctor-topbar-right { display: flex; align-items: center; gap: 10px; }
+.btn-logout {
+  background: #fff; color: #A32D2D;
+  border: 1px solid #f7c1c1;
+  border-radius: 8px;
+  padding: 0 14px; height: 32px;
+  font-size: 12px; cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-logout:hover { background: #fcebeb; }
+
+/* Content */
+.doctor-content {
+  margin-top: 56px;
+  padding: 1.5rem;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+}
+.doctor-section { display: none; }
+.doctor-section.active { display: block; }
+
+/* Profile */
+.profile-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e8edf3;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+}
+.profile-avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: #185FA5;
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 700;
+  flex-shrink: 0;
+}
+.profile-info h3 { font-size: 18px; font-weight: 600; color: #1a1a2e; margin-bottom: 6px; }
+.profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.detail-row {
+  display: flex; justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f5f5f5;
+  font-size: 13px;
+  color: #444;
+}
+.detail-row:last-child { border-bottom: none; }
+.detail-label { color: #888; font-weight: 500; }
